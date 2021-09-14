@@ -1,0 +1,8 @@
+# do not copy scriptIDs between repos
+.clasp.json
+
+# other ideas from https://github.com/google/clasp/blob/master/.gitignore
+*.DS_Store
+*.log
+tmp
+.clasprc.json
