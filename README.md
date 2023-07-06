@@ -92,6 +92,48 @@ Github    Google    Github
 ```
 Use the Microsoft free client IDE on your own PC working on local files
 
+### Reconnect to repo
+
+It you start working on a fresh local clone of the git repo, your clasp environment may not be set up.
+
+```
+## check any deployments
+clasp deployments
+
+## check if you are logged in
+clasp login --status
+# a fresh PC may have no default credentials in: ~/.clasprc.json.
+
+# Authenticate clasp with browser, profile and Google account you use
+clasp login
+# paste in the URL if needed, choose the account and Allow
+
+# repeat the Initial Clone from above
+cd shortname
+clasp clone ID
+# this ensures that the .clasp.json goes into the container subfolder
+```
+
+**NOTE**: 
+
+`clasp clone` will also `clasp pull` automatically. 
+This **WILL overwrite** any local copy of your scripts from the GCP project. 
+
+If there are any changes you may need to stash these and/or switch branches 
+to get the local code version you need. to pick up your work. 
+As an alternative you might consider simply forcing the creation of `.clasp.json` as proposed in https://stackoverflow.com/q/58645417 to contain `{"scriptId":"<id>","rootDir":"<pwd>"}`
+
+
+### Further ideas
+
+see https://docs.joshuatz.com/cheatsheets/google-apps-scripts/ for suggestions including:
+
+* coding with: 
+	* Google native services, 
+	* third party external services, 
+	* generic web services
+* debugging, 
+* environment control and secrets
 
 
 ## Footnotes
