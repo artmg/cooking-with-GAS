@@ -124,6 +124,15 @@ to get the local code version you need. to pick up your work.
 As an alternative you might consider simply forcing the creation of `.clasp.json` as proposed in https://stackoverflow.com/q/58645417 to contain `{"scriptId":"<id>","rootDir":"<pwd>"}`
 
 
+### What code is in my environment
+
+If your release management processes do not have a means to track commit versions per environment, you may need to reverse engineer this.
+
+* Create a new branch
+* make sure your `clasp settings` point to the relevant environment
+* `clasp pull` to bring the code into your local
+* ?? how to get git to tell you which commit the current checkout matches ??
+
 ### Further ideas
 
 see https://docs.joshuatz.com/cheatsheets/google-apps-scripts/ for suggestions including:
