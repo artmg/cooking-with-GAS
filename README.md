@@ -2,6 +2,10 @@
 
 A selection of useful patterns for Google Apps Script (GAS)
 
+## Global scope is Project
+
+When you declare variables outside of a function, their scope is 'global'. As explained in this [stackoverflow answer](https://stackoverflow.com/a/57781757) all parts of individual `.gs` files in an Apps Script project are treated as one at runtime, so global variables may be accessed by any function in any script file, regardless of which script file they are declared in.
+
 ## Clasp
 
 ### Installing Clasp
@@ -13,16 +17,36 @@ node -v
 npm -v
 ```
 
-If not, we recommend the ‘long term stable’ version that avoids excessive updates and issues, use your preferred package manager to install it, e.g. `choco install nodejs-lts` or e.g. `brew install node@14` (see other versions in https://formulae.brew.sh/formula/node ) 
+If not, we recommend the ‘long term stable’ version that avoids excessive updates and issues, use your preferred package manager to install it, e.g. `choco install nodejs-lts` or e.g. `brew install node@18` (see other versions in https://nodejs.dev/en/about/releases/ and https://formulae.brew.sh/formula/node ) 
+
+
 Once you have node.JS installed, then install clasp:
 
 ```
 npm install -g @google/clasp
+```
 
+### clasp login
+
+```
 # Authenticate clasp with the Google account you want to use
 clasp login
 # help - clasp command reference - https://github.com/google/clasp
 ```
+
+* use the url to authorise Clasp to access the main account into which Calendar you want to sync others
+* if you are happy to grant this Google utility the permissions displayed, then click **Allow**
+	* this will create save the OAuth2.0 authentication token into the Clasp global settings: ` ~/.clasprc.json `
+
+By inspecting the contents of that file, you can see which resources it grants access to (token scope). However, there is no obvious way to see which account was used to obtain that token.
+
+#### multiple accounts
+
+There is an alternative way to be logged into different accounts for different clasp project folders on the same PC, but it is more complex to set up and manage
+
+Instructions TBC
+
+### next
 
 * Enable the Apps Script API in your account https://script.google.com/home/usersettings 
 * Check for any scripts in your account: https://script.google.com/home/all 
@@ -132,6 +156,9 @@ If your release management processes do not have a means to track commit version
 * make sure your `clasp settings` point to the relevant environment
 * `clasp pull` to bring the code into your local
 * ?? how to get git to tell you which commit the current checkout matches ??
+	* _Compare_ current code against multiple commits in git repo 
+	* see https://stackoverflow.com/q/31426506
+* 
 
 ### Further ideas
 
@@ -143,6 +170,10 @@ see https://docs.joshuatz.com/cheatsheets/google-apps-scripts/ for suggestions i
 	* generic web services
 * debugging, 
 * environment control and secrets
+
+### Alternatives
+
+Instead of using clasp and local github repos, you might prefer a simpler workflow using the [Google Apps Script GitHub Assistant chrome extension](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo). Note, however, that the pull from github just does a direct overwrite of Apps Script files, not a merge.
 
 
 ## Footnotes
