@@ -105,6 +105,22 @@ See if there was any delta
     - clasp push
 Now you can edit using the online Script Editor
 
+#### Clasp Pull issues
+
+If you get confusion between .gs files and .js files when you `clasp pull` you may need to set the fileextension first!
+
+```zsh
+clasp login
+clasp clone ID
+```
+Edit your `.clasp.json` file to include an extra option:  ` "fileExtension": "gs" `
+```zsh
+rm *.js *.gs
+clasp pull
+git status
+```
+
+
 #### VSCode
 
 ```
