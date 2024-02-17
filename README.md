@@ -134,7 +134,7 @@ Use the Microsoft free client IDE on your own PC working on local files
 
 ### Reconnect to repo
 
-It you start working on a fresh local clone of the git repo, your clasp environment may not be set up.
+It you start working on a fresh local clone of the git repo, your clasp environment may not be set up. You might get the error `No valid .clasp.json project file.`
 
 ```
 ## check any deployments
@@ -161,8 +161,17 @@ This **WILL overwrite** any local copy of your scripts from the GCP project.
 
 If there are any changes you may need to stash these and/or switch branches 
 to get the local code version you need. to pick up your work. 
+
+#### Alternative for managed environments
+
 As an alternative you might consider simply forcing the creation of `.clasp.json` as proposed in https://stackoverflow.com/q/58645417 to contain `{"scriptId":"<id>","rootDir":"<pwd>"}`
 
+If you manage your environments using `clasp setting` then the initial project 'creation' can be as simple as
+
+```sh
+if [[ ! -f .clasp.json ]]; then echo "{\"scriptId\":\"not-set\",\"rootDir\":\"$(pwd)\"}" > .clasp.json ; fi
+# tested with bash, sh and zsh
+```
 
 ### What code is in my environment
 
