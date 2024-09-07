@@ -17,13 +17,25 @@ node -v
 npm -v
 ```
 
-If not, we recommend the ‘long term stable’ version that avoids excessive updates and issues, use your preferred package manager to install it, e.g. `choco install nodejs-lts` or e.g. `brew install node@18` (see other versions in https://nodejs.dev/en/about/releases/ and https://formulae.brew.sh/formula/node ) 
-
-
-Once you have node.JS installed, then install clasp:
+If not, we recommend the ‘long term stable’ version that avoids excessive updates and issues, use your preferred package manager to install it, e.g. `choco install nodejs-lts` or e.g. `brew install node@18` (see other versions in https://nodejs.dev/en/about/releases/ and https://formulae.brew.sh/formula/node ). For over three years now clasp's version constraint in `package.json` has been `"node": "^12.20.0 || ^14.13.1 || >=16.0.0"`. If you prefer to manage your local node versions with `nvm` then:
 
 ```
+nvm ls
+nvm install --lts
+nvm use --lts
+```
+
+
+Once you have node.JS and its `npm` package manager, then you can install clasp:
+
+```
+# optionally check if you have an installed version of clasp already
+# npm list -g @google/clasp
+
 npm install -g @google/clasp
+
+# optionally update the package if had already installed an older version
+# npm update -g @google/clasp
 ```
 
 ### clasp login
